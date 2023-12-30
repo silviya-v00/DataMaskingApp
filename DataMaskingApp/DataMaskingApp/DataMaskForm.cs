@@ -239,27 +239,22 @@ namespace DataMaskingApp
 
             DisplayCSVData(MaskedDataTable);
         }
-
+                
         private void ShuffleData(List<int> selectedIndices)
         {
+            Random random = new Random();
+
             foreach (int columnIndex in selectedIndices)
             {
-                foreach (DataRow row in MaskedDataTable.Rows)
+                List<string> columnValues = MaskedDataTable.AsEnumerable()
+                    .Select(row => row.Field<string>(columnIndex))
+                    .ToList();
+
+                columnValues = columnValues.OrderBy(x => random.Next()).ToList();
+
+                for (int i = 0; i < MaskedDataTable.Rows.Count; i++)
                 {
-                    string cellValue = row[columnIndex].ToString();
-
-                    string[] words = cellValue.Split(new char[] { ' ', ',', '.', ';', ':', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    List<string> shuffledWords = new List<string>();
-                    foreach (string word in words)
-                    {
-                        char[] letters = word.ToLower().ToCharArray();
-                        letters = letters.OrderBy(c => Guid.NewGuid()).ToArray();
-                        string shuffledWord = new string(letters);
-                        shuffledWords.Add(shuffledWord);
-                    }
-
-                    row[columnIndex] = string.Join(" ", shuffledWords);
+                    MaskedDataTable.Rows[i][columnIndex] = columnValues[i];
                 }
             }
         }
@@ -306,6 +301,13 @@ namespace DataMaskingApp
             DataGridView dataGridView = new DataGridView();
             dataGridView.Dock = DockStyle.Fill;
             dataGridView.DataSource = dataTable;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.ReadOnly = true;
+            dataGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            dataGridView.AllowUserToResizeRows = false;
+            dataGridView.AllowUserToOrderColumns = false;
+            dataGridView.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
 
             splitContainer1.Panel2.Controls.Add(dataGridView);
         }

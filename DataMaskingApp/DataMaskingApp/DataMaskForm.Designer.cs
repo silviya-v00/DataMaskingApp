@@ -195,9 +195,9 @@ namespace DataMaskingApp
             this.chkSubstitutionMasking.AutoSize = true;
             this.chkSubstitutionMasking.Location = new System.Drawing.Point(29, 298);
             this.chkSubstitutionMasking.Name = "chkSubstitutionMasking";
-            this.chkSubstitutionMasking.Size = new System.Drawing.Size(177, 24);
+            this.chkSubstitutionMasking.Size = new System.Drawing.Size(100, 24);
             this.chkSubstitutionMasking.TabIndex = 5;
-            this.chkSubstitutionMasking.Text = "Substitution Masking";
+            this.chkSubstitutionMasking.Text = "Substitute";
             this.chkSubstitutionMasking.UseVisualStyleBackColor = true;
             this.chkSubstitutionMasking.CheckedChanged += new System.EventHandler(this.chkSubstitutionMasking_CheckedChanged);
             // 
@@ -208,9 +208,9 @@ namespace DataMaskingApp
             this.chkShufflingMasking.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShufflingMasking.Location = new System.Drawing.Point(29, 268);
             this.chkShufflingMasking.Name = "chkShufflingMasking";
-            this.chkShufflingMasking.Size = new System.Drawing.Size(156, 24);
+            this.chkShufflingMasking.Size = new System.Drawing.Size(79, 24);
             this.chkShufflingMasking.TabIndex = 4;
-            this.chkShufflingMasking.Text = "Shuffling Masking";
+            this.chkShufflingMasking.Text = "Shuffle";
             this.chkShufflingMasking.UseVisualStyleBackColor = true;
             this.chkShufflingMasking.CheckedChanged += new System.EventHandler(this.chkShufflingMasking_CheckedChanged);
             // 
@@ -240,7 +240,10 @@ namespace DataMaskingApp
             this.ClientSize = new System.Drawing.Size(1301, 619);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DataMaskForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Data Masking";
