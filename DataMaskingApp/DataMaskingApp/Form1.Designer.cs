@@ -1,7 +1,7 @@
 ﻿
 namespace DataMaskingApp
 {
-    partial class Form1
+    partial class ImportCSVForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,13 +29,35 @@ namespace DataMaskingApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnImportCSV = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btnImportCSV
+            // 
+            this.btnImportCSV.Location = new System.Drawing.Point(117, 58);
+            this.btnImportCSV.Name = "btnImportCSV";
+            this.btnImportCSV.Size = new System.Drawing.Size(237, 28);
+            this.btnImportCSV.TabIndex = 0;
+            this.btnImportCSV.Text = "Import CSV";
+            this.btnImportCSV.UseVisualStyleBackColor = true;
+            this.btnImportCSV.Click += new System.EventHandler(this.btnImportCSV_Click);
+            // 
+            // ImportCSVForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(472, 247);
+            this.Controls.Add(this.btnImportCSV);
+            this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Name = "ImportCSVForm";
+            this.Text = "Import CSV";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnImportCSV;
     }
 }
 
