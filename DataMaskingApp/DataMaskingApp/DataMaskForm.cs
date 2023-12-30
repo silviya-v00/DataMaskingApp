@@ -331,10 +331,13 @@ namespace DataMaskingApp
 
                     using (StreamWriter writer = new StreamWriter(filePath))
                     {
-                        foreach (DataColumn column in MaskedDataTable.Columns)
+                        for (int i = 0; i < MaskedDataTable.Columns.Count; i++)
                         {
-                            writer.Write(column.ColumnName);
-                            writer.Write(",");
+                            writer.Write(MaskedDataTable.Columns[i].ColumnName);
+                            if (i < MaskedDataTable.Columns.Count - 1)
+                            {
+                                writer.Write("\t");
+                            }
                         }
                         writer.WriteLine();
 
@@ -343,7 +346,10 @@ namespace DataMaskingApp
                             for (int i = 0; i < MaskedDataTable.Columns.Count; i++)
                             {
                                 writer.Write(row[i].ToString());
-                                writer.Write(",");
+                                if (i < MaskedDataTable.Columns.Count - 1)
+                                {
+                                    writer.Write("\t");
+                                }
                             }
                             writer.WriteLine();
                         }
@@ -356,6 +362,16 @@ namespace DataMaskingApp
             {
                 MessageBox.Show($"Error exporting data: {ex.Message}");
             }
+        }
+
+        private void linkLblNewImport_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void linkLblExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
